@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Download, FileSpreadsheet, LoaderCircle } from 'lucide-react';
 import * as XLSX from 'xlsx';
-import workbookUrl from '../../jadwal-kerja-kala-muda-ggs.xlsx?url';
+import workbookUrl from '../jadwal-kerja-kala-muda-ggs.xlsx?url';
 
 type CellValue = string | number | boolean;
 type WorkbookCell = {

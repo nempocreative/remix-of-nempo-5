@@ -1,5 +1,5 @@
 const posterImage = new URL(
-  "../../../../attached_assets/Sumpah_Pemuda__Youth_United_1793173357753.png",
+  "../../../assets/Sumpah_Pemuda__Youth_United_1793173357753.png",
   import.meta.url,
 ).href;
 
