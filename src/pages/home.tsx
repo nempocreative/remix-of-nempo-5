@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { SEO } from "@/components/seo";
 import { Layout } from "@/components/layout";
 import { PlacePhoto } from "@/components/place-photo";
-import { Search, MapPin, MapPinned, Route, TrainFront, ChevronRight, ChevronLeft, ArrowRight, Flame, ThumbsUp, Info, Map, CalendarDays, Users, Building2, Ticket, Leaf, Award, Gift, TreePine, Heart, Mountain, Compass, Droplets, Wind, Eye, Thermometer, Newspaper, Clock, Radio, UtensilsCrossed, UserPlus, Star, Shield, Crown, Coffee, Music, Tv, Mic, BookOpen, Instagram } from "lucide-react";
+import { Search, MapPin, MapPinned, Route, TrainFront, ChevronRight, ArrowRight, Flame, ThumbsUp, Info, Map, CalendarDays, Users, Building2, Ticket, Leaf, Award, Gift, TreePine, Heart, Mountain, Compass, Droplets, Wind, Eye, Thermometer, Newspaper, Clock, Radio, UtensilsCrossed, UserPlus, Star, Shield, Crown, Coffee, Music, Tv, Mic, BookOpen, Instagram } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { Link, useLocation } from "@/lib/wouter";
@@ -730,39 +730,6 @@ const INFO_BANNERS = [
 
 ] as const;
 
-const HOME_FOLKLORE_STORIES = [
-  {
-    id: "situ-bagendit",
-    title: "Legenda Situ Bagendit",
-    place: "Garut",
-    category: "Legenda tempat",
-    duration: "6 menit",
-    image: "situ-bagendit.jpg",
-    description: "Kisah tentang keserakahan, kepedulian, dan danau yang menjadi ikon Garut.",
-    accent: "#0f766e",
-  },
-  {
-    id: "lutung-kasarung",
-    title: "Lutung Kasarung",
-    place: "Tatar Sunda",
-    category: "Kisah kerajaan",
-    duration: "8 menit",
-    image: "lutung-kasarung.jpg",
-    description: "Perjalanan Purbasari menemukan keberanian, ketulusan, dan cinta.",
-    accent: "#7c3aed",
-  },
-  {
-    id: "nyi-anteh",
-    title: "Nyi Anteh Sang Penunggu Bulan",
-    place: "Bandung Raya",
-    category: "Legenda langit",
-    duration: "7 menit",
-    image: "nyi-anteh.jpg",
-    description: "Kisah perempuan tekun yang hidup dalam imajinasi masyarakat Sunda.",
-    accent: "#4338ca",
-  },
-] as const;
-
 function InfoPhotoBanner({ banner }: { banner: (typeof INFO_BANNERS)[number] }) {
   return (
     <>
@@ -800,8 +767,6 @@ export default function Home() {
   const [activeEvent, setActiveEvent] = useState(0);
   const [activeCafe, setActiveCafe] = useState(0);
   const [activeDiskon, setActiveDiskon] = useState(0);
-  const [folkloreActive, setFolkloreActive] = useState(0);
-  const [folklorePaused, setFolklorePaused] = useState(false);
   const diskonTouchX = useRef(0);
   const [infoBannerIdx, setInfoBannerIdx] = useState(0);
   const infoBannerTouchX = useRef(0);
@@ -838,22 +803,6 @@ export default function Home() {
 
     return () => window.clearInterval(timer);
   }, []);
-
-  useEffect(() => {
-    HOME_FOLKLORE_STORIES.forEach((story) => {
-      const image = new window.Image();
-      image.src = `${import.meta.env.BASE_URL}images/cerita/${story.image}`;
-    });
-  }, []);
-
-  useEffect(() => {
-    if (folklorePaused || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const timer = window.setInterval(() => {
-      if (window.innerWidth >= 1024) return;
-      setFolkloreActive((current) => (current + 1) % HOME_FOLKLORE_STORIES.length);
-    }, 6500);
-    return () => window.clearInterval(timer);
-  }, [folklorePaused]);
 
   useEffect(() => {
     const load = (path: string, setter: (d: ApiItem[]) => void) =>
@@ -1627,7 +1576,6 @@ export default function Home() {
         .home-section-service-promos { order: 20; }
         .home-section-facts { order: 11; }
         .home-section-partnership { order: 90; }
-        .home-section-folklore { order: 101; }
         .home-section-organizer { order: 110; }
         .home-section-partners { order: 120; }
       `}</style>
@@ -1941,142 +1889,6 @@ export default function Home() {
         <section className="home-section-service-promos mt-2 sm:mt-0">
           <NempoPartnershipCarousel />
         </section>
-
-        {/* ── Cerita Rakyat ── */}
-        <section
-          id="cerita-rakyat-home"
-          className="home-section-folklore scroll-mt-6 relative isolate w-full text-[#243b35]"
-        >
-          {(() => {
-            const visibleStories = [0, 1, 2].map((offset) => ({
-              story: HOME_FOLKLORE_STORIES[(folkloreActive + offset) % HOME_FOLKLORE_STORIES.length],
-              index: (folkloreActive + offset) % HOME_FOLKLORE_STORIES.length,
-            }));
-            const nextIndex = (folkloreActive + 1) % HOME_FOLKLORE_STORIES.length;
-            const previousIndex =
-              (folkloreActive + HOME_FOLKLORE_STORIES.length - 1) % HOME_FOLKLORE_STORIES.length;
-
-            return (
-              <div
-                className="relative mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10"
-                onMouseEnter={() => setFolklorePaused(true)}
-                onMouseLeave={() => setFolklorePaused(false)}
-              >
-                <div className="mb-5 flex flex-wrap items-end justify-between gap-3 sm:mb-6">
-                  <div>
-                    <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[#b86f51]">
-                      Cerita rakyat
-                    </p>
-                    <h2 className="mt-1 font-serif text-2xl font-bold leading-tight tracking-[-0.035em] text-[#293f37] sm:text-3xl">
-                      Kisah dari tanah Jawa Barat
-                    </h2>
-                    <p className="mt-1.5 max-w-xl text-xs leading-relaxed text-[#6d7d75] sm:text-sm">
-                      Kenali legenda dan kisah yang diwariskan dari generasi ke generasi.
-                    </p>
-                  </div>
-                  <Link
-                    href="/cerita-rakyat"
-                    className="inline-flex items-center gap-1.5 rounded-full border border-[#d6c3a2] bg-[#fffaf0] px-3.5 py-2 text-[10px] font-black text-[#315a4e] transition hover:border-[#315a4e] hover:bg-white sm:text-xs"
-                  >
-                    Semua cerita <ArrowRight className="h-3.5 w-3.5" />
-                  </Link>
-                </div>
-
-                <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
-                  {visibleStories.map(({ story, index }, position) => (
-                    <article
-                      key={story.id}
-                      className={`group overflow-hidden rounded-2xl border border-[#e2d3ba] bg-[#fffaf0] shadow-[0_12px_28px_rgba(94,70,38,0.1)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_34px_rgba(94,70,38,0.16)] ${
-                        position === 1 ? "hidden sm:block" : position === 2 ? "hidden lg:block" : ""
-                      }`}
-                    >
-                      <Link href={`/cerita-rakyat/${story.id}`} className="block">
-                        <div className="relative aspect-[16/8.5] overflow-hidden bg-[#d8c3a0]">
-                          <img
-                            src={`${import.meta.env.BASE_URL}images/cerita/${story.image}`}
-                            alt={`Ilustrasi ${story.title}`}
-                            className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.035]"
-                            loading={position === 0 ? "eager" : "lazy"}
-                            decoding="async"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-[#1c2c25]/75 via-transparent to-[#1c2c25]/10" />
-                          <span className="absolute left-3 top-3 rounded-full border border-white/35 bg-[#1d2d27]/40 px-2.5 py-1 text-[9px] font-black uppercase tracking-[0.1em] text-white backdrop-blur-sm">
-                            Cerita {String(index + 1).padStart(2, "0")}
-                          </span>
-                          <div className="absolute bottom-3 left-3 right-3 flex items-end justify-between gap-3 text-white sm:bottom-4 sm:left-4 sm:right-4">
-                            <div>
-                              <p className="text-[9px] font-black uppercase tracking-[0.14em] text-white/75">
-                                {story.category}
-                              </p>
-                              <p className="mt-0.5 text-xs font-black sm:text-sm">{story.place}</p>
-                            </div>
-                            <BookOpen className="h-5 w-5 shrink-0 text-white/80" />
-                          </div>
-                        </div>
-                      </Link>
-                      <div className="flex min-h-[160px] flex-col p-4 sm:min-h-[178px] sm:p-5">
-                        <div className="flex items-center gap-1.5 text-[9px] font-bold uppercase tracking-[0.1em] text-[#b86f51]">
-                          <span>Legenda Jawa Barat</span>
-                          <span className="h-1 w-1 rounded-full bg-[#c6ae88]" />
-                          <Clock className="h-3 w-3" />
-                          <span>{story.duration} baca</span>
-                        </div>
-                        <h3 className="mt-2 font-serif text-xl font-bold leading-tight tracking-[-0.035em] text-[#293f37] sm:text-2xl">
-                          {story.title}
-                        </h3>
-                        <p className="mt-2 line-clamp-2 text-xs leading-[1.65] text-[#6d7d75] sm:text-sm">
-                          {story.description}
-                        </p>
-                        <Link
-                          href={`/cerita-rakyat/${story.id}`}
-                          className="mt-auto inline-flex w-fit items-center gap-1.5 pt-3 text-[10px] font-black text-[#315a4e] transition hover:text-[#b86f51] sm:text-xs"
-                        >
-                          Baca ceritanya <ArrowRight className="h-3.5 w-3.5" />
-                        </Link>
-                      </div>
-                    </article>
-                  ))}
-                </div>
-
-                <div className="relative mx-auto mt-4 flex max-w-6xl items-center justify-between gap-3 lg:hidden">
-                  <button
-                    type="button"
-                    onClick={() => setFolkloreActive(previousIndex)}
-                    aria-label={`Cerita sebelumnya: ${HOME_FOLKLORE_STORIES[previousIndex].title}`}
-                    className="inline-flex items-center gap-1.5 rounded-full border border-[#d6c3a2] bg-[#fffaf0] px-3 py-2 text-[10px] font-black text-[#6d7d75] transition hover:border-[#315a4e] hover:text-[#315a4e]"
-                  >
-                    <ChevronLeft className="h-3.5 w-3.5" />
-                    Sebelumnya
-                  </button>
-                  <div className="flex items-center gap-1.5" role="group" aria-label="Pilih halaman cerita">
-                    {HOME_FOLKLORE_STORIES.map((item, index) => (
-                      <button
-                        key={item.id}
-                        type="button"
-                        onClick={() => setFolkloreActive(index)}
-                        aria-label={`Buka ${item.title}`}
-                        aria-pressed={folkloreActive === index}
-                        className={`h-1.5 rounded-full transition-all ${
-                          folkloreActive === index ? "w-7 bg-[#b86f51]" : "w-1.5 bg-[#bda982]/60 hover:bg-[#b86f51]/70"
-                        }`}
-                      />
-                    ))}
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => setFolkloreActive(nextIndex)}
-                    aria-label={`Cerita berikutnya: ${HOME_FOLKLORE_STORIES[nextIndex].title}`}
-                    className="inline-flex items-center gap-1.5 rounded-full border border-[#d6c3a2] bg-[#fffaf0] px-3 py-2 text-[10px] font-black text-[#6d7d75] transition hover:border-[#315a4e] hover:text-[#315a4e]"
-                  >
-                    Berikutnya
-                    <ChevronRight className="h-3.5 w-3.5" />
-                  </button>
-                </div>
-              </div>
-            );
-          })()}
-        </section>
-
 
         {/* ── Kuliner Populer ── */}
         {eventPortfolioItems.length > 0 && (
