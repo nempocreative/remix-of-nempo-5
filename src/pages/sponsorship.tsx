@@ -172,7 +172,6 @@ export default function SponsorshipPage() {
               ["01", "Wisata", "destinasi dan pengalaman lokal", "/wisata"],
               ["02", "Kuliner", "rasa yang dicari dan dibagikan", "/kuliner"],
               ["03", "Cafe", "ruang bertemu dan menghabiskan waktu", "/cafe"],
-              ["04", "Cerita rakyat", "warisan yang terus diceritakan", "/cerita-rakyat"],
             ].map(([number, title, text, href]) => (
               <a key={title} href={href} className="sponsor-collab-ecosystem-item">
                 <span>{number}</span>

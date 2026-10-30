@@ -306,8 +306,6 @@ export const categoryIllustrations = {
   "layanan-digital": IconLayananDigitalIllustration,
   "daftar-harga": IconDaftarHargaIllustration,
   "komunitas": IconKomunitasIllustration,
-  "berita": IconBeritaIllustration,
-  "cerita-rakyat": IconCeritaRakyatIllustration,
   "influencer-hub": IconInfluencerHubIllustration,
   "merchandise": IconMerchandiseIllustration,
   "cultural-tour": IconCulturalTourIllustration,
