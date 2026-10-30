@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet-async";
+import { useEffect } from "react";
 
 const SITE_NAME = "Nempo Organizer";
 const BASE_URL = "https://nempo.id";
@@ -27,36 +27,25 @@ export function SEO({
   const canonical = `${BASE_URL}${path}`;
   const ogImage = image.startsWith("http") ? image : `${BASE_URL}${image}`;
 
-  return (
-    <Helmet>
-      <title>{fullTitle}</title>
-      <meta name="description" content={description} />
-      {keywords && <meta name="keywords" content={keywords} />}
-      {noIndex ? (
-        <meta name="robots" content="noindex, nofollow" />
-      ) : (
-        <meta name="robots" content="index, follow" />
-      )}
-      <link rel="canonical" href={canonical} />
-
-      <meta property="og:locale" content="id_ID" />
-      <meta property="og:site_name" content="Nempo Organizer" />
-      <meta property="og:title" content={fullTitle} />
-      <meta property="og:description" content={description} />
-      <meta property="og:url" content={canonical} />
-      <meta property="og:type" content={type} />
-      <meta property="og:image" content={ogImage} />
-      <meta property="og:image:width" content="1200" />
-      <meta property="og:image:height" content="630" />
-      <meta property="og:image:alt" content={fullTitle} />
-
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:site" content="@nempo.id" />
-      <meta name="twitter:creator" content="@nempo.id" />
-      <meta name="twitter:title" content={fullTitle} />
-      <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={ogImage} />
-      <meta name="twitter:image:alt" content={fullTitle} />
-    </Helmet>
-  );
+  useEffect(() => {
+    document.title = fullTitle;
+    const set = (attr: string, key: string, val: string) => {
+      let el = document.head.querySelector<HTMLMetaElement>(`meta[${attr}="${key}"]`);
+      if (!el) {
+        el = document.createElement("meta");
+        el.setAttribute(attr, key);
+        document.head.appendChild(el);
+      }
+      el.content = val;
+    };
+    set("name", "description", description);
+    if (keywords) set("name", "keywords", keywords);
+    set("name", "robots", noIndex ? "noindex, nofollow" : "index, follow");
+    set("property", "og:title", fullTitle);
+    set("property", "og:description", description);
+    set("property", "og:url", canonical);
+    set("property", "og:type", type);
+    set("property", "og:image", ogImage);
+  }, [fullTitle, description, keywords, noIndex, canonical, type, ogImage]);
+  return null;
 }
