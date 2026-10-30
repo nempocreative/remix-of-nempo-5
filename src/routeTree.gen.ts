@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as SplatRouteImport } from './routes/$'
 import { Route as AdminPanelIndexRouteImport } from './routes/admin-panel.index'
 import { Route as AdminPanelSplatRouteImport } from './routes/admin-panel.$'
+import { Route as ApiSplatRouteImport } from './routes/api/$'
 import { Route as CmsIndexRouteImport } from './routes/cms.index'
 import { Route as CmsSplatRouteImport } from './routes/cms.$'
 import { Route as NempoFeedIndexRouteImport } from './routes/nempo-feed.index'
@@ -40,6 +41,11 @@ const AdminPanelIndexRoute = AdminPanelIndexRouteImport.update({
 const AdminPanelSplatRoute = AdminPanelSplatRouteImport.update({
   id: '/admin-panel/$',
   path: '/admin-panel/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiSplatRoute = ApiSplatRouteImport.update({
+  id: '/api/$',
+  path: '/api/$',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CmsIndexRoute = CmsIndexRouteImport.update({
@@ -87,6 +93,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
   '/admin-panel/$': typeof AdminPanelSplatRoute
+  '/api/$': typeof ApiSplatRoute
   '/cms/$': typeof CmsSplatRoute
   '/nempo-feed/$': typeof NempoFeedSplatRoute
   '/nempo-mou/$': typeof NempoMouSplatRoute
@@ -101,6 +108,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
   '/admin-panel/$': typeof AdminPanelSplatRoute
+  '/api/$': typeof ApiSplatRoute
   '/cms/$': typeof CmsSplatRoute
   '/nempo-feed/$': typeof NempoFeedSplatRoute
   '/nempo-mou/$': typeof NempoMouSplatRoute
@@ -116,6 +124,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
   '/admin-panel/$': typeof AdminPanelSplatRoute
+  '/api/$': typeof ApiSplatRoute
   '/cms/$': typeof CmsSplatRoute
   '/nempo-feed/$': typeof NempoFeedSplatRoute
   '/nempo-mou/$': typeof NempoMouSplatRoute
@@ -132,6 +141,7 @@ export interface FileRouteTypes {
     | '/'
     | '/$'
     | '/admin-panel/$'
+    | '/api/$'
     | '/cms/$'
     | '/nempo-feed/$'
     | '/nempo-mou/$'
@@ -146,6 +156,7 @@ export interface FileRouteTypes {
     | '/'
     | '/$'
     | '/admin-panel/$'
+    | '/api/$'
     | '/cms/$'
     | '/nempo-feed/$'
     | '/nempo-mou/$'
@@ -160,6 +171,7 @@ export interface FileRouteTypes {
     | '/'
     | '/$'
     | '/admin-panel/$'
+    | '/api/$'
     | '/cms/$'
     | '/nempo-feed/$'
     | '/nempo-mou/$'
@@ -175,6 +187,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   SplatRoute: typeof SplatRoute
   AdminPanelSplatRoute: typeof AdminPanelSplatRoute
+  ApiSplatRoute: typeof ApiSplatRoute
   CmsSplatRoute: typeof CmsSplatRoute
   NempoFeedSplatRoute: typeof NempoFeedSplatRoute
   NempoMouSplatRoute: typeof NempoMouSplatRoute
@@ -214,6 +227,13 @@ declare module '@tanstack/react-router' {
       path: '/admin-panel/$'
       fullPath: '/admin-panel/$'
       preLoaderRoute: typeof AdminPanelSplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/$': {
+      id: '/api/$'
+      path: '/api/$'
+      fullPath: '/api/$'
+      preLoaderRoute: typeof ApiSplatRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cms/': {
@@ -279,6 +299,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   SplatRoute: SplatRoute,
   AdminPanelSplatRoute: AdminPanelSplatRoute,
+  ApiSplatRoute: ApiSplatRoute,
   CmsSplatRoute: CmsSplatRoute,
   NempoFeedSplatRoute: NempoFeedSplatRoute,
   NempoMouSplatRoute: NempoMouSplatRoute,
