@@ -1,0 +1,50 @@
+{
+  "name": "Nempo Organizer",
+  "short_name": "Nempo Organizer",
+  "description": "Platform digital pariwisata Jawa Barat — wisata alam, kuliner, penginapan, dan event budaya.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0194f3",
+  "orientation": "portrait-primary",
+  "lang": "id",
+  "categories": ["travel", "lifestyle", "food"],
+  "icons": [
+    { "src": "/favicon-16.png",  "sizes": "16x16",   "type": "image/png" },
+    { "src": "/favicon-32.png",  "sizes": "32x32",   "type": "image/png" },
+    { "src": "/favicon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/favicon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ],
+  "screenshots": [
+    {
+      "src": "/opengraph.jpg",
+      "type": "image/jpeg",
+      "sizes": "1200x630",
+      "form_factor": "wide",
+      "label": "Nempo Organizer — Beranda"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Wisata Jawa Barat",
+      "short_name": "Wisata",
+      "description": "Jelajahi destinasi wisata terbaik Jawa Barat",
+      "url": "/wisata",
+      "icons": [{ "src": "/icon-wisata.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Kuliner Jawa Barat",
+      "short_name": "Kuliner",
+      "description": "Temukan kuliner khas Jawa Barat",
+      "url": "/kuliner",
+      "icons": [{ "src": "/icon-kuliner.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Event Jawa Barat",
+      "short_name": "Event",
+      "description": "Event dan festival budaya Jawa Barat",
+      "url": "/event",
+      "icons": [{ "src": "/icon-event.png", "sizes": "96x96" }]
+    }
+  ]
+}
