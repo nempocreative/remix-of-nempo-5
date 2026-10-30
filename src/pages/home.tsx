@@ -1703,7 +1703,6 @@ export default function Home() {
         .home-section-creator-team { order: 18; }
         .home-section-promo { order: 51; }
         .home-section-cafe { order: 52; }
-        .home-section-kuliner { order: 53; }
         .home-section-events { order: 50; }
         .home-section-news { order: 99; }
         .home-section-service-promos { order: 20; }
