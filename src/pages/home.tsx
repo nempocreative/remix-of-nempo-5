@@ -2414,7 +2414,7 @@ export default function Home() {
                       const isBonusPromo = c.kind === "bonus";
                       return (
                          <div key={c.id} className="promo-card promo-shine relative flex min-w-0 flex-1 flex-col overflow-hidden rounded-[1.35rem] ring-1 ring-white/15 cursor-pointer select-none"
-                          style={{ background:`linear-gradient(145deg,${clr.from} 0%,${clr.to} 100%)`, boxShadow:`0 6px 24px ${clr.shadow}55` }}>
+                          style={{ background:`linear-gradient(145deg,${clr.from} 0%,${clr.to} 100%)` }}>
                            <div aria-hidden="true" className="pointer-events-none absolute -left-2 top-1/2 z-[3] h-4 w-4 -translate-y-1/2 rounded-full bg-white" />
                            <div aria-hidden="true" className="pointer-events-none absolute -right-2 top-1/2 z-[3] h-4 w-4 -translate-y-1/2 rounded-full bg-white" />
                            <div className="absolute -right-1 -bottom-2 font-black text-white/[0.07] leading-none select-none pointer-events-none" style={{ fontSize:68, fontFamily:"system-ui" }}>{c.amount}</div>
@@ -2494,7 +2494,7 @@ export default function Home() {
 
                   return (
                     <div key={`d-${c.id}`} className="promo-card promo-shine relative overflow-hidden rounded-[1.35rem] ring-1 ring-white/15 cursor-pointer select-none"
-                      style={{ background:`linear-gradient(135deg,${clr.from} 0%,${clr.to} 100%)`, boxShadow:`0 6px 20px ${clr.shadow}55` }}>
+                      style={{ background:`linear-gradient(135deg,${clr.from} 0%,${clr.to} 100%)` }}>
 
                       {/* Decorative blobs */}
                       <div aria-hidden="true" className="pointer-events-none absolute -left-2 top-1/2 z-[3] h-4 w-4 -translate-y-1/2 rounded-full bg-white" />
