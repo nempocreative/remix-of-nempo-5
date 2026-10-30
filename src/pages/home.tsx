@@ -1269,6 +1269,39 @@ export default function Home() {
       badge: "Olahraga",
     },
   ];
+  const [eventRowEl, eventRowRef] = useState<HTMLElement | null>(null);
+  useEffect(() => {
+    const el = eventRowEl;
+    if (!el) return;
+    let raf = 0;
+    let pausedUntil = 0;
+    let pos = el.scrollLeft;
+    const pause = () => { pausedUntil = Date.now() + 2500; };
+    const tick = () => {
+      if (Date.now() > pausedUntil) {
+        const max = el.scrollWidth - el.clientWidth;
+        if (max > 0) {
+          pos = Math.abs(el.scrollLeft - pos) > 2 ? el.scrollLeft : pos;
+          pos += 0.5;
+          if (pos >= max) pos = 0;
+          el.scrollLeft = pos;
+        }
+      } else {
+        pos = el.scrollLeft;
+      }
+      raf = requestAnimationFrame(tick);
+    };
+    el.addEventListener("touchstart", pause, { passive: true });
+    el.addEventListener("pointerdown", pause);
+    el.addEventListener("wheel", pause, { passive: true });
+    raf = requestAnimationFrame(tick);
+    return () => {
+      cancelAnimationFrame(raf);
+      el.removeEventListener("touchstart", pause);
+      el.removeEventListener("pointerdown", pause);
+      el.removeEventListener("wheel", pause);
+    };
+  }, [eventRowEl]);
   const homeMoodPicks = homeMoodConfigs
     .map((mood) => {
       const sourceItems = mood.source === "wisata"
@@ -2262,7 +2295,7 @@ export default function Home() {
               Semua <ChevronRight className="h-3.5 w-3.5" />
             </Link>
           </div>
-           <section className="touch-card-row relative -mx-4 overflow-x-auto scrollbar-hide px-4 md:mx-0 md:px-0">
+           <section ref={eventRowRef} className="touch-card-row relative -mx-4 overflow-x-auto scrollbar-hide px-4 md:mx-0 md:px-0">
             <div
                className="flex items-end gap-3"
               style={{
