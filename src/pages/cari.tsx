@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation, useSearch } from "@/lib/wouter";
-import { Search, X, MapPin, Utensils, Compass, Home, Calendar, Newspaper, ArrowLeft, Loader2 } from "lucide-react";
+import { Search, X, MapPin, Utensils, Compass, Home, Calendar, ArrowLeft, Loader2 } from "lucide-react";
 import { Layout } from "@/components/layout";
 import { SEO } from "@/components/seo";
 
