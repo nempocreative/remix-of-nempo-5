@@ -1269,9 +1269,9 @@ export default function Home() {
       badge: "Olahraga",
     },
   ];
-  const eventRowRef = useRef<HTMLElement | null>(null);
+  const [eventRowEl, eventRowRef] = useState<HTMLElement | null>(null);
   useEffect(() => {
-    const el = eventRowRef.current;
+    const el = eventRowEl;
     if (!el) return;
     let raf = 0;
     let pausedUntil = 0;
@@ -1301,7 +1301,7 @@ export default function Home() {
       el.removeEventListener("pointerdown", pause);
       el.removeEventListener("wheel", pause);
     };
-  }, []);
+  }, [eventRowEl]);
   const homeMoodPicks = homeMoodConfigs
     .map((mood) => {
       const sourceItems = mood.source === "wisata"
