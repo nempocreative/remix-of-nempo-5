@@ -51,7 +51,6 @@ const faqs = [
 ];
 
 export default function EventOrganizerPage() {
-export default function EventOrganizerPage() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
