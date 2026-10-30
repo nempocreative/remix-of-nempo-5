@@ -6,7 +6,7 @@ import {
   FaTiktok,
   FaWhatsapp,
 } from 'react-icons/fa6';
-import { SiCanva, SiGoogledocs } from 'react-icons/si';
+import { SiCanvas, SiGoogledocs } from 'react-icons/si';
 import kamalCvProfileImage from '@/assets/generated_images/nempo-feed-kamal-profile.png';
 import raniCvProfileImage from '@/assets/generated_images/nempo-feed-rani-profile.png';
 import sangkuriangBackground from '@/assets/generated_images/cerita/sangkuriang-background-20.webp';
@@ -377,7 +377,7 @@ const slideFourSoftware = [
   { label: 'Word', Icon: FaFileWord, color: '#2b579a' },
   { label: 'Excel', Icon: FaFileExcel, color: '#217346' },
   { label: 'Google Docs', Icon: SiGoogledocs, color: '#4285f4' },
-  { label: 'Canva', Icon: SiCanva, color: '#00a8cc' },
+  { label: 'Canva', Icon: SiCanvas, color: '#00a8cc' },
 ];
 
 function SlideFourCv() {
