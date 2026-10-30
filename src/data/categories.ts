@@ -35,7 +35,6 @@ export const categories3D: Category3D[] = [
   { id: "layanan-digital", name: "Digi Nempo",      path: "/digital-services",bg: "#06b6d4", shadow: "#155e75", customGradient: "linear-gradient(145deg, #a5f3fc 0%, #06b6d4 50%, #155e75 100%)" },
   { id: "daftar-harga",    name: "Kerja sama",      path: "/price-list",      bg: "#84cc16", shadow: "#365314", customGradient: "linear-gradient(145deg, #d9f99d 0%, #84cc16 50%, #365314 100%)" },
   { id: "komunitas",       name: "Komunitas",       path: "/komunitas",       bg: "#38bdf8", shadow: "#0369a1", customGradient: "linear-gradient(145deg, #bae6fd 0%, #38bdf8 50%, #0369a1 100%)" },
-  { id: "berita",          name: "Berita",          path: "/berita",          bg: "#fb923c", shadow: "#9a3412", customGradient: "linear-gradient(145deg, #fed7aa 0%, #fb923c 50%, #9a3412 100%)" },
   { id: "cerita-rakyat",   name: "Cerita Rakyat",   path: "/cerita-rakyat",   bg: "#d97706", shadow: "#92400e", customGradient: "linear-gradient(145deg, #fef3c7 0%, #d97706 50%, #78350f 100%)" },
   { id: "influencer-hub",  name: "Influencer",      path: "/influencer-hub",  bg: "#ec4899", shadow: "#9d174d", customGradient: "linear-gradient(145deg, #fbcfe8 0%, #ec4899 50%, #9d174d 100%)" },
   { id: "merchandise",     name: "Merchandise",     path: "/merchandise",     bg: "#0194f3", shadow: "#0172B1", customGradient: "linear-gradient(145deg, #bae6fd 0%, #0194f3 50%, #0172B1 100%)" },

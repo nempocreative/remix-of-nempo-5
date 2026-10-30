@@ -9,12 +9,12 @@ export const Route = createFileRoute("/$")({
       { title: "Nempo Organizer — Garut & Jawa Barat" },
       {
         name: "description",
-        content: "Platform digital pariwisata Garut: wisata, kuliner, penginapan, event, dan berita.",
+        content: "Platform digital pariwisata Garut: wisata, kuliner, penginapan, dan event.",
       },
       { property: "og:title", content: "Nempo Organizer — Garut & Jawa Barat" },
       {
         property: "og:description",
-        content: "Wisata, kuliner, penginapan, event, dan berita Garut.",
+        content: "Wisata, kuliner, penginapan, dan event Garut.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

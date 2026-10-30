@@ -35,7 +35,7 @@ type CityFilterContextValue = {
   isCityAvailable: (city: CityName) => boolean;
 };
 
-const LOCATION_ENDPOINTS = ["/api/wisata", "/api/kuliner", "/api/cafe", "/api/penginapan", "/api/events", "/api/berita"];
+const LOCATION_ENDPOINTS = ["/api/wisata", "/api/kuliner", "/api/cafe", "/api/penginapan", "/api/events"];
 const CityFilterContext = createContext<CityFilterContextValue | null>(null);
 
 function normalizeLocation(value: string) {
