@@ -21,6 +21,12 @@ import { useRouter, useRouterState } from "@tanstack/react-router";
 type Params = Record<string, string>;
 
 const ParamsContext = createContext<Params>({});
+const BaseContext = createContext<string>("");
+
+function withBase(base: string, to: string) {
+  if (!base || !to.startsWith("/") || to.startsWith("//")) return to.replace(/^~/, "");
+  return base + (to === "/" ? "/" : to);
+}
 
 function compile(pattern: string) {
   const keys: string[] = [];
@@ -56,16 +62,21 @@ export function matchPath(pattern: string, path: string): [boolean, Params | nul
 }
 
 function usePathname() {
-  return useRouterState({ select: (s) => s.location.pathname });
+  const base = useContext(BaseContext);
+  const path = useRouterState({ select: (s) => s.location.pathname });
+  if (base && path.toLowerCase().startsWith(base.toLowerCase())) return path.slice(base.length) || "/";
+  return path;
 }
 
 type NavOpts = { replace?: boolean; state?: unknown };
 
 export function useNavigate() {
   const router = useRouter();
+  const base = useContext(BaseContext);
   return (to: string, opts?: NavOpts) => {
-    if (opts?.replace) router.history.replace(to);
-    else router.history.push(to);
+    const full = withBase(base, to);
+    if (opts?.replace) router.history.replace(full);
+    else router.history.push(full);
   };
 }
 
@@ -102,7 +113,9 @@ type LinkProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "href"> & {
 
 export function Link({ href, to, replace, asChild, onClick, children, ...rest }: LinkProps) {
   const nav = useNavigate();
+  const base = useContext(BaseContext);
   const target = href ?? to ?? "#";
+  const shown = withBase(base, target);
   const handle = (e: MouseEvent<HTMLAnchorElement>) => {
     onClick?.(e);
     if (
@@ -121,10 +134,10 @@ export function Link({ href, to, replace, asChild, onClick, children, ...rest }:
   };
   if (asChild && isValidElement(children)) {
     const child = children as ReactElement<Record<string, unknown>>;
-    return cloneElement(child, { ...rest, href: target, onClick: handle });
+    return cloneElement(child, { ...rest, href: shown, onClick: handle });
   }
   return (
-    <a {...rest} href={target} onClick={handle}>
+    <a {...rest} href={shown} onClick={handle}>
       {children}
     </a>
   );
@@ -168,6 +181,8 @@ export function Redirect({ to, href }: { to?: string; href?: string }) {
   return null;
 }
 
-export function Router({ children }: { base?: string; children?: ReactNode }) {
-  return <>{children}</>;
+export function Router({ base, children }: { base?: string; children?: ReactNode }) {
+  const parent = useContext(BaseContext);
+  const value = (parent + (base ?? "")).replace(/\/+$/, "");
+  return <BaseContext.Provider value={value}>{children}</BaseContext.Provider>;
 }
