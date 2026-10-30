@@ -4,4 +4,5 @@
 - [ ] Data lama (CSV dari database Replit) — menunggu file dari user
 - [ ] Login user & admin panel (admin-panel / cms-nempo-garut)
 - [ ] Pembayaran Midtrans & email SMTP — butuh kunci dari user saat verifikasi
-- [ ] Artefak lain: nempo-garut (versi lama), nempo-feed-45, nempo-mou, tion-feed, mockup-sandbox
+- [x] Bagian lain digabung: /admin-panel, /cms, /nempo-feed, /nempo-mou, /tion-feed
+- [ ] Lewati (belum diminta ulang): mockup-sandbox (alat desain Replit), nempo-garut versi lama
