@@ -1628,7 +1628,6 @@ export default function Home() {
         .home-section-facts { order: 11; }
         .home-section-partnership { order: 90; }
         .home-section-folklore { order: 101; }
-        .home-section-about { order: 100; }
         .home-section-organizer { order: 110; }
         .home-section-partners { order: 120; }
       `}</style>
@@ -1941,55 +1940,6 @@ export default function Home() {
 
         <section className="home-section-service-promos mt-2 sm:mt-0">
           <NempoPartnershipCarousel />
-        </section>
-
-        {/* ── Tentang Nempo Organizer ── */}
-        <section
-          id="tentang-nempo"
-          className="home-section-about relative isolate overflow-hidden rounded-[2rem] border border-[#dcebf4] bg-gradient-to-br from-[#eef8ff] via-white to-[#f0fbf5] text-[#123d54]"
-        >
-          <div className="pointer-events-none absolute -right-12 -top-16 h-48 w-48 rounded-full bg-[#9ed8f1]/25 blur-3xl" />
-          <div className="pointer-events-none absolute -bottom-24 left-1/3 h-48 w-48 rounded-full bg-[#bcebd8]/45 blur-3xl" />
-
-          <div className="relative grid gap-4 p-4 sm:grid-cols-[minmax(0,1fr)_220px] sm:items-center sm:gap-6 sm:p-5 md:grid-cols-[minmax(0,1fr)_250px] md:p-6">
-            <div className="min-w-0">
-              <div className="mb-2.5 flex items-center gap-2">
-                <span className="h-2 w-2 rounded-full bg-[#0194f3] shadow-[0_0_0_5px_rgba(1,148,243,0.13)]" />
-                <p className="text-[9px] font-black uppercase tracking-[0.2em] text-[#0172b1]">Tentang Nempo Organizer</p>
-              </div>
-              <h2 className="max-w-xl text-2xl font-black leading-[1.06] tracking-[-0.045em] text-[#123d54] sm:text-3xl">
-                Jawa Barat lebih dekat
-                <span className="mt-1 block text-[#0172b1]">kalau diceritakan dari orang lokal.</span>
-              </h2>
-              <p className="mt-3 max-w-2xl text-xs leading-relaxed text-[#627d80] sm:text-sm">
-                Nempo mengajak kamu menemukan tempat, rasa, dan aktivitas seru tanpa kehilangan cerita di baliknya.
-              </p>
-              <div className="mt-4 flex flex-wrap items-center gap-2">
-                <Link
-                  href="/komunitas"
-                  className="inline-flex items-center gap-1.5 rounded-full bg-[#123d54] px-3.5 py-2 text-[11px] font-black text-white shadow-md shadow-[#123d54]/15 transition hover:-translate-y-0.5 hover:bg-[#168b68]"
-                >
-                  Mulai menjelajah <ChevronRight className="h-3 w-3" />
-                </Link>
-                <Link
-                  href="/price-list"
-                  className="inline-flex items-center gap-1 rounded-full px-2.5 py-2 text-[11px] font-bold text-[#168b68] transition hover:bg-[#e7f6ef]"
-                >
-                  Ceritakan punyamu <ArrowRight className="h-3 w-3" />
-                </Link>
-              </div>
-            </div>
-
-            <div className="relative flex min-h-[128px] w-full items-center justify-center sm:min-h-[150px]">
-              <div className="absolute bottom-1 right-2 h-24 w-56 rounded-full bg-[#ccefe1]/80 blur-xl sm:h-32 sm:w-52" />
-              <img
-                src={`${import.meta.env.BASE_URL}images/nempo-about-creative.webp`}
-                alt="Maskot Nempo sedang berkarya"
-                decoding="async"
-                className="relative z-10 h-[132px] w-full max-w-[250px] object-contain object-center drop-shadow-[0_12px_10px_rgba(18,61,84,0.14)] transition-transform duration-300 hover:-translate-y-1 sm:h-[164px] sm:w-[244px]"
-              />
-            </div>
-          </div>
         </section>
 
         {/* ── Cerita Rakyat ── */}
