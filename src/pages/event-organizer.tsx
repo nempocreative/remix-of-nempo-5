@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Layout } from "@/components/layout";
 import { Link } from "@/lib/wouter";
 import {
-  PartyPopper, Heart, Building2, Music, GraduationCap, Trophy,
+  PartyPopper, Building2, Music, GraduationCap, Trophy,
   MessageCircle, ClipboardList, Palette, Wrench, Sparkles, FileCheck,
   Check, ChevronDown, Star, Users, CalendarCheck, MapPin, ArrowRight,
 } from "lucide-react";
