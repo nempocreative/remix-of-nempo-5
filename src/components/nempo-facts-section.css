@@ -1,0 +1,81 @@
+@keyframes nempoMascotBob {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-1deg);
+  }
+  50% {
+    transform: translateY(-6px) rotate(1deg);
+  }
+}
+
+@keyframes nempoFactEnter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes factFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes factGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 var(--glow);
+  }
+  50% {
+    box-shadow: 0 0 16px 3px var(--glow);
+  }
+}
+
+.nempo-mascot-float {
+  animation: nempoMascotBob 4.2s ease-in-out infinite;
+  transform-origin: center bottom;
+}
+
+.nempo-fact-enter {
+  animation: nempoFactEnter 280ms ease-out both;
+}
+
+.fact-icon {
+  animation: factFloat 3s ease-in-out infinite;
+}
+
+.fact-icon-wrap {
+  animation: factGlow 3s ease-in-out infinite;
+}
+
+.fact-card {
+  transition:
+    transform 240ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 240ms ease;
+}
+
+.fact-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 28px rgba(27, 91, 129, 0.12);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nempo-mascot-float,
+  .nempo-fact-enter,
+  .fact-icon,
+  .fact-icon-wrap {
+    animation: none;
+  }
+
+  .fact-card {
+    transition: none;
+  }
+}
