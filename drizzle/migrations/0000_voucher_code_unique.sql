@@ -1,1 +1,0 @@
-CREATE UNIQUE INDEX IF NOT EXISTS vouchers_code_unique ON public.vouchers (code);
