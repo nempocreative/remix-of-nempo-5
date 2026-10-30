@@ -229,7 +229,22 @@
   }
 
   .nempo-creator-team__wedding-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+    margin-inline: -2px;
+  }
+
+  .nempo-creator-team__wedding-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nempo-creator-team__wedding-grid .nempo-creator-team__card {
+    flex: 0 0 calc((100cqw - 12px) / 2);
+    scroll-snap-align: start;
   }
 
   .nempo-creator-team__portrait {
