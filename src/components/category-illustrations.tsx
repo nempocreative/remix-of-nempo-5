@@ -211,19 +211,6 @@ const IconBeritaIllustration = ({ className = defaultClassName }: IllustrationPr
   </svg>
 );
 
-const IconCeritaRakyatIllustration = ({ className = defaultClassName }: IllustrationProps) => (
-  <svg viewBox="0 0 72 72" fill="none" aria-hidden="true" className={className}>
-    <ellipse cx="36" cy="63" rx="24" ry="4" fill={shadow} opacity=".14" />
-    <path d="M36 17c-8-7-17-8-25-3v39c8-4 17-3 25 3V17Z" fill="#fff8e8" stroke={outline} strokeWidth="2.2" strokeLinejoin="round" />
-    <path d="M36 17c8-7 17-8 25-3v39c-8-4-17-3-25 3V17Z" fill="#f4dfb5" stroke={outline} strokeWidth="2.2" strokeLinejoin="round" />
-    <path d="M36 17v39" stroke="#a45b33" strokeWidth="2" />
-    <path d="M17 25c5-2 9-1 14 2M17 32c5-2 9-1 14 2M55 25c-5-2-9-1-14 2M55 32c-5-2-9-1-14 2" stroke="#d39b55" strokeWidth="1.7" strokeLinecap="round" />
-    <path d="M16 47c5-2 10-1 15 2M56 47c-5-2-10-1-15 2" stroke="#d77954" strokeWidth="1.7" strokeLinecap="round" />
-    <path d="m36 7 2 5 5 2-5 2-2 5-2-5-5-2 5-2 2-5Z" fill="#f7d56d" stroke={outline} strokeWidth="1.2" />
-    <path d="M9 56c9-3 18-2 27 3 9-5 18-6 27-3" stroke="#a45b33" strokeWidth="2.2" strokeLinecap="round" />
-  </svg>
-);
-
 const IconInfluencerHubIllustration = ({ className = defaultClassName }: IllustrationProps) => (
   <svg viewBox="0 0 72 72" fill="none" aria-hidden="true" className={className}>
     <ellipse cx="36" cy="63" rx="19" ry="4" fill={shadow} opacity=".14" />
