@@ -10,10 +10,10 @@ import creator07 from "@/assets/generated_images/nempo-creator-07.jpg";
 import creator08 from "@/assets/generated_images/nempo-creator-08.jpg";
 import creator09 from "@/assets/generated_images/nempo-creator-09.jpg";
 import creator10 from "@/assets/generated_images/nempo-creator-10.jpg";
-import weddingCreator01 from "../../../../lib/nempo-kenalan-deck/src/assets/deck/creator-wcc-ai.jpg";
-import weddingCreator02 from "../../../../lib/nempo-kenalan-deck/src/assets/deck/creator-daily-ai.jpg";
-import weddingCreator03 from "../../../../lib/nempo-kenalan-deck/src/assets/deck/creator-travel-ai.jpg";
-import weddingCreator04 from "../../../../lib/nempo-kenalan-deck/src/assets/deck/creator-influencer-ai.jpg";
+import weddingCreator01 from "@/assets/lib/nempo-kenalan-deck/src/assets/deck/creator-wcc-ai.jpg";
+import weddingCreator02 from "@/assets/lib/nempo-kenalan-deck/src/assets/deck/creator-daily-ai.jpg";
+import weddingCreator03 from "@/assets/lib/nempo-kenalan-deck/src/assets/deck/creator-travel-ai.jpg";
+import weddingCreator04 from "@/assets/lib/nempo-kenalan-deck/src/assets/deck/creator-influencer-ai.jpg";
 import { NEMPO_INSTAGRAM_DM_URL } from "@/lib/contact";
 import "./nempo-creator-team-card.css";
 
