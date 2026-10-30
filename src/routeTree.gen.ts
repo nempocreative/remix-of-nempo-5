@@ -11,6 +11,16 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as SplatRouteImport } from './routes/$'
+import { Route as AdminPanelIndexRouteImport } from './routes/admin-panel.index'
+import { Route as AdminPanelSplatRouteImport } from './routes/admin-panel.$'
+import { Route as CmsIndexRouteImport } from './routes/cms.index'
+import { Route as CmsSplatRouteImport } from './routes/cms.$'
+import { Route as NempoFeedIndexRouteImport } from './routes/nempo-feed.index'
+import { Route as NempoFeedSplatRouteImport } from './routes/nempo-feed.$'
+import { Route as NempoMouIndexRouteImport } from './routes/nempo-mou.index'
+import { Route as NempoMouSplatRouteImport } from './routes/nempo-mou.$'
+import { Route as TionFeedIndexRouteImport } from './routes/tion-feed.index'
+import { Route as TionFeedSplatRouteImport } from './routes/tion-feed.$'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -22,31 +32,158 @@ const SplatRoute = SplatRouteImport.update({
   path: '/$',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminPanelIndexRoute = AdminPanelIndexRouteImport.update({
+  id: '/admin-panel/',
+  path: '/admin-panel/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminPanelSplatRoute = AdminPanelSplatRouteImport.update({
+  id: '/admin-panel/$',
+  path: '/admin-panel/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CmsIndexRoute = CmsIndexRouteImport.update({
+  id: '/cms/',
+  path: '/cms/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CmsSplatRoute = CmsSplatRouteImport.update({
+  id: '/cms/$',
+  path: '/cms/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NempoFeedIndexRoute = NempoFeedIndexRouteImport.update({
+  id: '/nempo-feed/',
+  path: '/nempo-feed/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NempoFeedSplatRoute = NempoFeedSplatRouteImport.update({
+  id: '/nempo-feed/$',
+  path: '/nempo-feed/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NempoMouIndexRoute = NempoMouIndexRouteImport.update({
+  id: '/nempo-mou/',
+  path: '/nempo-mou/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NempoMouSplatRoute = NempoMouSplatRouteImport.update({
+  id: '/nempo-mou/$',
+  path: '/nempo-mou/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TionFeedIndexRoute = TionFeedIndexRouteImport.update({
+  id: '/tion-feed/',
+  path: '/tion-feed/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TionFeedSplatRoute = TionFeedSplatRouteImport.update({
+  id: '/tion-feed/$',
+  path: '/tion-feed/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
+  '/admin-panel/$': typeof AdminPanelSplatRoute
+  '/cms/$': typeof CmsSplatRoute
+  '/nempo-feed/$': typeof NempoFeedSplatRoute
+  '/nempo-mou/$': typeof NempoMouSplatRoute
+  '/tion-feed/$': typeof TionFeedSplatRoute
+  '/admin-panel/': typeof AdminPanelIndexRoute
+  '/cms/': typeof CmsIndexRoute
+  '/nempo-feed/': typeof NempoFeedIndexRoute
+  '/nempo-mou/': typeof NempoMouIndexRoute
+  '/tion-feed/': typeof TionFeedIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
+  '/admin-panel/$': typeof AdminPanelSplatRoute
+  '/cms/$': typeof CmsSplatRoute
+  '/nempo-feed/$': typeof NempoFeedSplatRoute
+  '/nempo-mou/$': typeof NempoMouSplatRoute
+  '/tion-feed/$': typeof TionFeedSplatRoute
+  '/admin-panel': typeof AdminPanelIndexRoute
+  '/cms': typeof CmsIndexRoute
+  '/nempo-feed': typeof NempoFeedIndexRoute
+  '/nempo-mou': typeof NempoMouIndexRoute
+  '/tion-feed': typeof TionFeedIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
+  '/admin-panel/$': typeof AdminPanelSplatRoute
+  '/cms/$': typeof CmsSplatRoute
+  '/nempo-feed/$': typeof NempoFeedSplatRoute
+  '/nempo-mou/$': typeof NempoMouSplatRoute
+  '/tion-feed/$': typeof TionFeedSplatRoute
+  '/admin-panel/': typeof AdminPanelIndexRoute
+  '/cms/': typeof CmsIndexRoute
+  '/nempo-feed/': typeof NempoFeedIndexRoute
+  '/nempo-mou/': typeof NempoMouIndexRoute
+  '/tion-feed/': typeof TionFeedIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/$'
+  fullPaths:
+    | '/'
+    | '/$'
+    | '/admin-panel/$'
+    | '/cms/$'
+    | '/nempo-feed/$'
+    | '/nempo-mou/$'
+    | '/tion-feed/$'
+    | '/admin-panel/'
+    | '/cms/'
+    | '/nempo-feed/'
+    | '/nempo-mou/'
+    | '/tion-feed/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/$'
-  id: '__root__' | '/' | '/$'
+  to:
+    | '/'
+    | '/$'
+    | '/admin-panel/$'
+    | '/cms/$'
+    | '/nempo-feed/$'
+    | '/nempo-mou/$'
+    | '/tion-feed/$'
+    | '/admin-panel'
+    | '/cms'
+    | '/nempo-feed'
+    | '/nempo-mou'
+    | '/tion-feed'
+  id:
+    | '__root__'
+    | '/'
+    | '/$'
+    | '/admin-panel/$'
+    | '/cms/$'
+    | '/nempo-feed/$'
+    | '/nempo-mou/$'
+    | '/tion-feed/$'
+    | '/admin-panel/'
+    | '/cms/'
+    | '/nempo-feed/'
+    | '/nempo-mou/'
+    | '/tion-feed/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   SplatRoute: typeof SplatRoute
+  AdminPanelSplatRoute: typeof AdminPanelSplatRoute
+  CmsSplatRoute: typeof CmsSplatRoute
+  NempoFeedSplatRoute: typeof NempoFeedSplatRoute
+  NempoMouSplatRoute: typeof NempoMouSplatRoute
+  TionFeedSplatRoute: typeof TionFeedSplatRoute
+  AdminPanelIndexRoute: typeof AdminPanelIndexRoute
+  CmsIndexRoute: typeof CmsIndexRoute
+  NempoFeedIndexRoute: typeof NempoFeedIndexRoute
+  NempoMouIndexRoute: typeof NempoMouIndexRoute
+  TionFeedIndexRoute: typeof TionFeedIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -65,12 +202,92 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SplatRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin-panel/': {
+      id: '/admin-panel/'
+      path: '/admin-panel'
+      fullPath: '/admin-panel/'
+      preLoaderRoute: typeof AdminPanelIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin-panel/$': {
+      id: '/admin-panel/$'
+      path: '/admin-panel/$'
+      fullPath: '/admin-panel/$'
+      preLoaderRoute: typeof AdminPanelSplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cms/': {
+      id: '/cms/'
+      path: '/cms'
+      fullPath: '/cms/'
+      preLoaderRoute: typeof CmsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cms/$': {
+      id: '/cms/$'
+      path: '/cms/$'
+      fullPath: '/cms/$'
+      preLoaderRoute: typeof CmsSplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/nempo-feed/': {
+      id: '/nempo-feed/'
+      path: '/nempo-feed'
+      fullPath: '/nempo-feed/'
+      preLoaderRoute: typeof NempoFeedIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/nempo-feed/$': {
+      id: '/nempo-feed/$'
+      path: '/nempo-feed/$'
+      fullPath: '/nempo-feed/$'
+      preLoaderRoute: typeof NempoFeedSplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/nempo-mou/': {
+      id: '/nempo-mou/'
+      path: '/nempo-mou'
+      fullPath: '/nempo-mou/'
+      preLoaderRoute: typeof NempoMouIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/nempo-mou/$': {
+      id: '/nempo-mou/$'
+      path: '/nempo-mou/$'
+      fullPath: '/nempo-mou/$'
+      preLoaderRoute: typeof NempoMouSplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tion-feed/': {
+      id: '/tion-feed/'
+      path: '/tion-feed'
+      fullPath: '/tion-feed/'
+      preLoaderRoute: typeof TionFeedIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tion-feed/$': {
+      id: '/tion-feed/$'
+      path: '/tion-feed/$'
+      fullPath: '/tion-feed/$'
+      preLoaderRoute: typeof TionFeedSplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   SplatRoute: SplatRoute,
+  AdminPanelSplatRoute: AdminPanelSplatRoute,
+  CmsSplatRoute: CmsSplatRoute,
+  NempoFeedSplatRoute: NempoFeedSplatRoute,
+  NempoMouSplatRoute: NempoMouSplatRoute,
+  TionFeedSplatRoute: TionFeedSplatRoute,
+  AdminPanelIndexRoute: AdminPanelIndexRoute,
+  CmsIndexRoute: CmsIndexRoute,
+  NempoFeedIndexRoute: NempoFeedIndexRoute,
+  NempoMouIndexRoute: NempoMouIndexRoute,
+  TionFeedIndexRoute: TionFeedIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
