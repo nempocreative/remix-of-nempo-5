@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 
 const services = [
-  { icon: Heart, title: "Wedding & Lamaran", desc: "Konsep adat Sunda hingga modern, dekor, MC, dokumentasi, dan koordinasi hari H." },
+  { icon: MapPin, title: "Outing & Tour", desc: "Perjalanan wisata rombongan, outing kantor, dan tur komunitas dengan transportasi lengkap." },
   { icon: Building2, title: "Corporate Event", desc: "Gathering, launching produk, seminar, rapat kerja, dan family day perusahaan." },
   { icon: Music, title: "Konser & Festival", desc: "Produksi panggung, sound, lighting, tiketing digital, dan manajemen talent." },
   { icon: GraduationCap, title: "Event Sekolah & Kampus", desc: "Pensi, wisuda, perpisahan, seminar, dan buku tahunan digital." },
@@ -38,7 +38,7 @@ const stats = [
 ];
 
 const testimonials = [
-  { name: "Rina & Dimas", role: "Wedding, Garut", text: "Semua beres tanpa kami pusing. Dekor adat Sundanya cantik dan rundown tepat waktu." },
+  { name: "Panitia Festival Pantai", role: "Festival, Garut", text: "Panggung, sound, sampai tiket digital semua diatur NEMPO. Ramai, aman, dan tepat waktu." },
   { name: "HRD PT Sinar Priangan", role: "Family Gathering", text: "Tim NEMPO responsif dan kreatif. Karyawan senang, acaranya rapi dari awal sampai akhir." },
   { name: "OSIS SMAN Garut", role: "Pentas Seni", text: "Tiket digital dan scan QR bikin antrean masuk lancar. Recommended!" },
 ];
@@ -68,7 +68,7 @@ export default function EventOrganizerPage() {
             <span className="text-brand-orange">kami yang urus</span> dari awal sampai akhir.
           </h1>
           <p className="relative mt-4 max-w-md text-sm leading-relaxed text-primary-foreground/80">
-            Event & wedding organizer asal Garut — konsep kreatif, vendor terpercaya, dan tim lapangan berpengalaman di seluruh Jawa Barat.
+            Event organizer asal Garut — konsep kreatif, vendor terpercaya, dan tim lapangan berpengalaman di seluruh Jawa Barat.
           </p>
           <div className="relative mt-7 flex gap-3">
             <a href="#paket" className="flex-1 rounded-xl bg-brand-orange px-5 py-3.5 text-center text-sm font-bold text-primary-foreground shadow-lg shadow-brand-orange/30 active:scale-[0.98]">
