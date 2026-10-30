@@ -1,12 +1,12 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation, useSearch } from "@/lib/wouter";
-import { Search, X, MapPin, Utensils, Compass, Home, Calendar, Newspaper, ArrowLeft, Loader2 } from "lucide-react";
+import { Search, X, MapPin, Utensils, Compass, Home, Calendar, ArrowLeft, Loader2 } from "lucide-react";
 import { Layout } from "@/components/layout";
 import { SEO } from "@/components/seo";
 
 const API = (path: string) => `/api${path}`;
 
-type Category = "Semua" | "Wisata" | "Kuliner" | "Penginapan" | "Event" | "Berita";
+type Category = "Semua" | "Wisata" | "Kuliner" | "Penginapan" | "Event";
 
 interface Result {
   id: number;
@@ -23,7 +23,6 @@ const TYPE_META: Record<Exclude<Category, "Semua">, { icon: React.ElementType; c
   Kuliner:    { icon: Utensils,  color: "#EF4444", bg: "#FEF2F2", label: "Kuliner" },
   Penginapan: { icon: Home,      color: "#8B5CF6", bg: "#F5F3FF", label: "Penginapan" },
   Event:      { icon: Calendar,  color: "#F59E0B", bg: "#FFFBEB", label: "Event" },
-  Berita:     { icon: Newspaper, color: "#10B981", bg: "#ECFDF5", label: "Berita" },
 };
 
 export default function CariPage() {
@@ -52,8 +51,7 @@ export default function CariPage() {
       fetch(API("/kuliner")).then(r => r.json()),
       fetch(API("/penginapan")).then(r => r.json()),
       fetch(API("/events")).then(r => r.json()),
-      fetch(API("/berita")).then(r => r.json()),
-    ]).then(([wisata, kuliner, penginapan, events, berita]) => {
+    ]).then(([wisata, kuliner, penginapan, events]) => {
       const all: Result[] = [];
 
       if (wisata.status === "fulfilled") {
@@ -108,19 +106,6 @@ export default function CariPage() {
         });
       }
 
-      if (berita.status === "fulfilled") {
-        (Array.isArray(berita.value) ? berita.value : []).forEach((b: any) => {
-          if (
-            b.title?.toLowerCase().includes(q) ||
-            b.category?.toLowerCase().includes(q) ||
-            b.summary?.toLowerCase().includes(q) ||
-            b.content?.toLowerCase().includes(q)
-          ) {
-            all.push({ id: b.id, title: b.title, subtitle: b.category, image: b.image, href: `/berita/${b.slug || b.id}`, category: b.category, type: "Berita" });
-          }
-        });
-      }
-
       setResults(all);
       setLoading(false);
     });
@@ -135,7 +120,7 @@ export default function CariPage() {
     inputRef.current?.blur();
   }
 
-  const tabs: Category[] = ["Semua", "Wisata", "Kuliner", "Penginapan", "Event", "Berita"];
+  const tabs: Category[] = ["Semua", "Wisata", "Kuliner", "Penginapan", "Event"];
 
   const filtered = activeTab === "Semua" ? results : results.filter(r => r.type === activeTab);
 

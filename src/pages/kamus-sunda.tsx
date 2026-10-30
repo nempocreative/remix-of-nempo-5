@@ -511,7 +511,6 @@ export default function KamusSundaPage() {
           <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
             {[
               { icon: Globe, title: "Wisata Budaya",     desc: "Jelajahi situs budaya dan tradisi Garut",     href: "/wisata",  color: "from-sky-500 to-blue-600" },
-              { icon: BookOpen, title: "Berita Budaya",  desc: "Informasi terkini tentang seni dan budaya",   href: "/berita",  color: "from-violet-500 to-purple-600" },
               { icon: Filter, title: "Komunitas Seni",   desc: "Bergabung dengan komunitas seni Sunda Garut",  href: "/komunitas", color: "from-emerald-500 to-teal-600" },
             ].map(l => (
               <a key={l.title} href={l.href} className={`bg-gradient-to-br ${l.color} rounded-2xl p-4 text-white flex items-center gap-3 hover:opacity-90 hover:-translate-y-0.5 transition-all shadow-md`}>

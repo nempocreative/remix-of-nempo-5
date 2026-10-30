@@ -38,8 +38,6 @@ const CekTiketPage = lazy(() => import("@/pages/cek-tiket"));
 const RentCarPage = lazy(() => import("@/pages/rent-car"));
 const KomunitasPage = lazy(() => import("@/pages/komunitas"));
 const AdventureGearPage = lazy(() => import("@/pages/adventure-gear"));
-const BeritaPage = lazy(() => import("@/pages/berita"));
-const BeritaDetail = lazy(() => import("@/pages/berita-detail"));
 const CeritaRakyatPage = lazy(() => import("@/pages/cerita-rakyat"));
 const CeritaRakyatDetailPage = lazy(() => import("@/pages/cerita-rakyat").then((module) => ({ default: module.CeritaRakyatDetailPage })));
 const KamusSundaPage = lazy(() => import("@/pages/kamus-sunda"));
@@ -192,8 +190,6 @@ function Router() {
       <Route path="/adventure-gear" component={AdventureGearPage} />
       <Route path="/komunitas" component={KomunitasPage} />
       
-      <Route path="/berita" component={BeritaPage} />
-      <Route path="/berita/:id" component={BeritaDetail} />
       <Route path="/cerita-rakyat/:id" component={CeritaRakyatDetailPage} />
       <Route path="/cerita-rakyat" component={CeritaRakyatPage} />
       

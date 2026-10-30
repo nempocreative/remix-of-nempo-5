@@ -546,85 +546,6 @@ function WeatherWidget() {
   );
 }
 
-/* ── News Ticker Component ───────────────────────────────────────────────── */
-const catDotColor: Record<string, string> = {
-  Pariwisata: "#0ea5e9", Budaya: "#8b5cf6", Kuliner: "#f97316",
-  Ekonomi: "#10b981", Teknologi: "#06b6d4", Tradisi: "#0194f3", Peringatan: "#ef4444",
-};
-
-function NewsTicker({ news }: { news: { title: string; category: string; date: string }[] }) {
-  const [idx, setIdx] = useState(0);
-  const [visible, setVisible] = useState(true);
-
-  useEffect(() => {
-    const cycle = setInterval(() => {
-      setVisible(false);
-      setTimeout(() => {
-        setIdx(i => (i + 1) % news.length);
-        setVisible(true);
-      }, 350);
-    }, 4000);
-    return () => clearInterval(cycle);
-  }, [news.length]);
-
-  const current = news[idx];
-  const dot = catDotColor[current.category] ?? "#64748b";
-
-  return (
-    <Link href="/berita" className="block">
-      {/* Mobile: compact pill  |  Desktop: full-width bar like weather widget */}
-      <div className="relative overflow-hidden cursor-pointer group
-        flex
-        rounded-full md:rounded-2xl
-        w-full
-        items-center"
-        style={{ background: "linear-gradient(135deg, #15803d 0%, #16a34a 60%, #22c55e 100%)" }}
-      >
-        {/* Shimmer */}
-        <div className="absolute inset-0 pointer-events-none"
-          style={{ backgroundImage: "radial-gradient(circle at 85% 50%, rgba(187,247,208,0.2) 0%, transparent 60%)" }} />
-
-        {/* Label */}
-        <div className="shrink-0 flex items-center gap-1.5 border-r border-white/15 relative z-10"
-          style={{ padding: "7px 10px" }}>
-          <span className="block rounded-full animate-pulse shrink-0"
-            style={{ width: 6, height: 6, background: "#f87171" }} />
-          <span className="font-black text-white uppercase"
-            style={{ fontSize: 9, letterSpacing: "0.12em", lineHeight: 1, whiteSpace: "nowrap" }}>
-            Berita Terkini
-          </span>
-        </div>
-
-        {/* Headline */}
-        <div className="relative z-10 overflow-hidden flex items-center"
-          style={{ padding: "7px 10px", minWidth: 0, flex: 1 }}>
-          <div style={{
-            opacity: visible ? 1 : 0,
-            transform: visible ? "translateX(0)" : "translateX(5px)",
-            transition: "opacity 0.3s ease, transform 0.3s ease",
-            whiteSpace: "nowrap",
-            overflow: "hidden",
-            textOverflow: "ellipsis",
-            fontSize: 12,
-            fontWeight: 700,
-            color: "white",
-          }}>
-            <span className="text-white/60 mr-1.5" style={{ fontSize: 10 }}>
-              {current.category} ·
-            </span>
-            {current.title}
-          </div>
-        </div>
-
-        {/* Arrow */}
-        <div className="shrink-0 relative z-10 flex items-center" style={{ padding: "7px 10px 7px 4px" }}>
-          <ArrowRight className="text-white/60 group-hover:text-white group-hover:translate-x-0.5 transition-all"
-            style={{ width: 13, height: 13 }} strokeWidth={2.5} />
-        </div>
-      </div>
-    </Link>
-  );
-}
 
 /* ── Animated stats counter for the home page stats bar ── */
 const statsSchema = [
@@ -906,7 +827,6 @@ export default function Home() {
   const [kulinerItems, setKulinerItems] = useState<ApiItem[] | null>(null);
   const [cafeItems, setCafeItems] = useState<ApiItem[] | null>(null);
   const [eventItems, setEventItems] = useState<ApiItem[] | null>(null);
-  const [beritaItems, setBeritaItems] = useState<ApiItem[] | null>(null);
 
   const [liveStats, setLiveStats] = useState<{ destinasi: number; kuliner: number; events: number; visitors: number } | null>(null);
   const [donationStats, setDonationStats] = useState<{ total_bibit: number; total_donors: number; pohon_tumbuh: number } | null>(null);
@@ -947,7 +867,6 @@ export default function Home() {
       load("/kuliner", setKulinerItems);
       load("/cafe", setCafeItems);
       load("/events", setEventItems);
-      load("/berita", setBeritaItems);
 
       fetch("/api/stats")
         .then(r => r.ok ? r.json() : null)
@@ -1705,7 +1624,6 @@ export default function Home() {
         .home-section-promo { order: 51; }
         .home-section-cafe { order: 52; }
         .home-section-events { order: 50; }
-        .home-section-news { order: 99; }
         .home-section-service-promos { order: 20; }
         .home-section-facts { order: 11; }
         .home-section-partnership { order: 90; }
@@ -2209,39 +2127,6 @@ export default function Home() {
           })()}
         </section>
 
-        {/* ── Berita Terbaru Ticker ── */}
-        <div className="home-section-news">
-          {beritaItems !== null && beritaItems.length > 0 && (
-            <NewsTicker news={beritaItems as { title: string; category: string; date: string }[]} />
-          )}
-          {beritaItems !== null && beritaItems.length === 0 && (
-            <Link href="/berita" className="block">
-              <div className="group relative flex w-full cursor-pointer items-center overflow-hidden rounded-full md:rounded-2xl"
-                style={{ background: "linear-gradient(135deg, #15803d 0%, #16a34a 60%, #22c55e 100%)" }}>
-                <div className="pointer-events-none absolute inset-0"
-                  style={{ backgroundImage: "radial-gradient(circle at 85% 50%, rgba(187,247,208,0.2) 0%, transparent 60%)" }} />
-                <div className="relative z-10 flex shrink-0 items-center gap-1.5 border-r border-white/15"
-                  style={{ padding: "7px 10px" }}>
-                  <span className="block shrink-0 rounded-full"
-                    style={{ width: 6, height: 6, background: "#f87171" }} />
-                  <span className="font-black uppercase text-white"
-                    style={{ fontSize: 9, letterSpacing: "0.12em", lineHeight: 1, whiteSpace: "nowrap" }}>
-                    Berita Terkini
-                  </span>
-                </div>
-                <div className="relative z-10 flex min-w-0 flex-1 items-center overflow-hidden" style={{ padding: "7px 10px" }}>
-                  <span style={{ fontSize: 12, fontWeight: 600, color: "rgba(255,255,255,0.6)", whiteSpace: "nowrap" }}>
-                    Belum ada berita saat ini
-                  </span>
-                </div>
-                <div className="relative z-10 flex shrink-0 items-center" style={{ padding: "7px 10px 7px 4px" }}>
-                  <ArrowRight className="text-white/60 transition-all group-hover:translate-x-0.5 group-hover:text-white"
-                    style={{ width: 13, height: 13 }} strokeWidth={2.5} />
-                </div>
-              </div>
-            </Link>
-          )}
-        </div>
 
         {/* ── Kuliner Populer ── */}
         {eventPortfolioItems.length > 0 && (
