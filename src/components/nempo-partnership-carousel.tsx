@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { ArrowUpRight, CalendarDays, Coffee, Heart, MessageCircle } from "lucide-react";
-import cafePartnershipBannerImage from "@assets/generated_images/cafe-partnership-banner.jpg";
-import collaborationHeroImage from "@assets/076ae51bf23030e0b8cfb7975b94609a_1789408708055.jpg";
+import cafePartnershipBannerImage from "@/assets/generated_images/cafe-partnership-banner.jpg";
+import collaborationHeroImage from "@/assets/076ae51bf23030e0b8cfb7975b94609a_1789408708055.jpg";
 import { NEMPO_INSTAGRAM_DM_URL } from "@/lib/contact";
 import "./nempo-partnership-carousel.css";
 

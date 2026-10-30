@@ -15,17 +15,17 @@ import { NempoFactsSection } from "@/components/nempo-facts-section";
 import { NempoHomeCtaBanner } from "@/components/nempo-home-cta-banner";
 import { NempoPartnershipCarousel } from "@/components/nempo-partnership-carousel";
 import { NempoCreatorTeamCard } from "@/components/nempo-creator-team-card";
-import adventureHeroImage from "@assets/5c92c12744ccc725fce2d971df3dd4b4_1789407665394.jpg";
-import stayHeroImage from "@assets/4a995825d019114708a042b06256a9f9_1789407625253.jpg";
-import eventHeroImage from "@assets/6999fa21d5935dd58a0c1c2e375212a1_1789407991954.jpg";
-import natureHeroImage from "@assets/e51616056f69ad317e6c3a4e960c52f4_1789408035923.jpg";
-import culinaryHeroImage from "@assets/c225d4fb4ba1595ae8e06fe3c5abeb05_1789408460390.jpg";
-import venueHeroImage from "@assets/36b2a2caf7f2749ca53bb3190322259d_1789408390264.jpg";
-import collaborationHeroImage from "@assets/076ae51bf23030e0b8cfb7975b94609a_1789408708055.jpg";
-import kalaMudaHeroImage from "@assets/94d218d05080a6554bc7214283cb8a88_1789408730013.jpg";
-import digiNempoHeroImage from "@assets/d8bb582f2f075b716c1d0d1dc01bb672_1789408801865.jpg";
-import digitalGrowthBannerImage from "@assets/generated_images/digital-growth-banner.jpg";
-import cafePartnershipBannerImage from "@assets/generated_images/cafe-partnership-banner.jpg";
+import adventureHeroImage from "@/assets/5c92c12744ccc725fce2d971df3dd4b4_1789407665394.jpg";
+import stayHeroImage from "@/assets/4a995825d019114708a042b06256a9f9_1789407625253.jpg";
+import eventHeroImage from "@/assets/6999fa21d5935dd58a0c1c2e375212a1_1789407991954.jpg";
+import natureHeroImage from "@/assets/e51616056f69ad317e6c3a4e960c52f4_1789408035923.jpg";
+import culinaryHeroImage from "@/assets/c225d4fb4ba1595ae8e06fe3c5abeb05_1789408460390.jpg";
+import venueHeroImage from "@/assets/36b2a2caf7f2749ca53bb3190322259d_1789408390264.jpg";
+import collaborationHeroImage from "@/assets/076ae51bf23030e0b8cfb7975b94609a_1789408708055.jpg";
+import kalaMudaHeroImage from "@/assets/94d218d05080a6554bc7214283cb8a88_1789408730013.jpg";
+import digiNempoHeroImage from "@/assets/d8bb582f2f075b716c1d0d1dc01bb672_1789408801865.jpg";
+import digitalGrowthBannerImage from "@/assets/generated_images/digital-growth-banner.jpg";
+import cafePartnershipBannerImage from "@/assets/generated_images/cafe-partnership-banner.jpg";
 
 type HeroBanner = {
   id: number;
