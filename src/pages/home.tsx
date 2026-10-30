@@ -2369,7 +2369,6 @@ export default function Home() {
               ))}
             </div>
 
-             {/* Soft edge fades keep the moving reel focused without covering the cards. */}
           </section>
           </div>
         )}
