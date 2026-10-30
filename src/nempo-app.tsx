@@ -117,6 +117,7 @@ const MitraEditUsahaPage = lazy(() => import("@/pages/mitra-edit-usaha"));
 const IS_MAINTENANCE = import.meta.env.VITE_MAINTENANCE_MODE === "true";
 
 const queryClient = new QueryClient();
+void QueryClient;
 
 function PageFallback() {
   return (
@@ -321,7 +322,7 @@ function App() {
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
           <NetworkStatus />
-          <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
+          <WouterRouter>
             <Router />
           </WouterRouter>
           <Toaster />
