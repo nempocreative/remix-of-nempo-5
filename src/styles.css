@@ -1055,12 +1055,7 @@ html, body, #root {
 .touch-card-row {
   -webkit-overflow-scrolling: touch;
   overscroll-behavior-x: contain;
-  scroll-snap-type: x proximity;
-  touch-action: pan-x pinch-zoom;
-}
-
-.touch-card-row > * {
-  scroll-snap-align: start;
+  touch-action: pan-x pan-y pinch-zoom;
 }
 
 .mobile-card-slider {
