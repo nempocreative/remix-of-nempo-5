@@ -1703,7 +1703,6 @@ export default function Home() {
         .home-section-creator-team { order: 18; }
         .home-section-promo { order: 51; }
         .home-section-cafe { order: 52; }
-        .home-section-kuliner { order: 53; }
         .home-section-events { order: 50; }
         .home-section-news { order: 99; }
         .home-section-service-promos { order: 20; }
@@ -2752,149 +2751,8 @@ export default function Home() {
           <NempoCreatorTeamCard />
         </section>
 
-        {/* ── Kuliner Paling Populer ── (hanya non-Cafe) */}
-        {nonCafeKuliner.length > 0 && (
-        <section className="home-section-kuliner">
-          <style>{`
-            @keyframes kuliner-badge-pulse {
-              0%, 100% { box-shadow: 0 0 0 0 rgba(249,115,22,0.55); }
-              50% { box-shadow: 0 0 0 6px rgba(249,115,22,0); }
-            }
-            @keyframes kuliner-shine {
-              0% { background-position: -200% center; }
-              100% { background-position: 200% center; }
-            }
-            @keyframes kuliner-icon-spin {
-              0% { transform: rotate(-10deg) scale(1); }
-              50% { transform: rotate(10deg) scale(1.15); }
-              100% { transform: rotate(-10deg) scale(1); }
-            }
-            @keyframes kuliner-dot-blink {
-              0%, 100% { opacity: 1; transform: scale(1); }
-              50% { opacity: 0.4; transform: scale(0.7); }
-            }
-            .kuliner-title-shine {
-              background: linear-gradient(105deg, #ea580c 0%, #f97316 30%, #fb923c 50%, #fdba74 65%, #f97316 80%, #ea580c 100%);
-              background-size: 200% auto;
-              -webkit-background-clip: text;
-              -webkit-text-fill-color: transparent;
-              background-clip: text;
-              animation: kuliner-shine 3s linear infinite;
-            }
-            .home-destination-card {
-              box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08), 0 2px 6px rgba(15, 23, 42, 0.04);
-              border-color: rgba(226, 232, 240, 0.9);
-            }
-            .home-destination-card:hover {
-              box-shadow: 0 18px 38px rgba(15, 23, 42, 0.15), 0 5px 12px rgba(15, 23, 42, 0.06);
-              border-color: rgba(186, 230, 253, 0.95);
-            }
-            .home-card-media {
-              isolation: isolate;
-            }
-            .home-card-media img {
-              filter: saturate(0.98);
-            }
-            .home-destination-card:hover .home-card-media img {
-              filter: saturate(1.08);
-            }
-          `}</style>
-          <div className="flex items-end justify-between mb-4">
-            <div className="flex items-center gap-2.5">
-              <div className="relative shrink-0">
-                <div className="w-10 h-10 rounded-2xl flex items-center justify-center"
-                  style={{ background: "linear-gradient(135deg, #f97316 0%, #ea580c 100%)", animation: "kuliner-badge-pulse 2s ease-in-out infinite" }}>
-                  <UtensilsCrossed className="h-4 w-4 text-white" strokeWidth={2}
-                    style={{ animation: "kuliner-icon-spin 3s ease-in-out infinite" }} />
-                </div>
-                <span className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-emerald-400 border-2 border-white"
-                  style={{ animation: "kuliner-dot-blink 1.5s ease-in-out infinite" }} />
-              </div>
-              <div>
-                <p className="text-[#f97316] text-[10px] font-bold uppercase tracking-[0.18em] mb-1">Rasa yang wajib dicoba</p>
-                <h2 className="kuliner-title-shine font-black text-lg leading-none">Kuliner</h2>
-              </div>
-            </div>
-            <Link href="/kuliner" className="flex items-center gap-0.5 text-[#f97316] text-xs font-bold hover:underline">
-              Semua <ChevronRight className="h-3.5 w-3.5" />
-            </Link>
-          </div>
-           <div className="mobile-card-slider home-feature-card-slider grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
-            {nonCafeKuliner.slice(0, 4).map((k) => (
-              <Link key={k.id} href={`/kuliner/${(k as any).slug || k.id}`}
-                className="home-destination-card bg-white rounded-[1.35rem] shadow-sm hover:shadow-xl border overflow-hidden group transition-all duration-300 hover:-translate-y-1 flex flex-col"
-                data-testid={`kuliner-card-${k.id}`}>
-                <div className="home-card-media relative aspect-square overflow-hidden bg-orange-50 md:h-52 md:aspect-auto">
-                  <PlacePhoto
-                    kind="culinary"
-                    src={k.image}
-                    alt={k.name}
-                    className="h-full w-full"
-                    imageClassName="group-hover:scale-105 transition duration-700 ease-out"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/65 via-slate-950/5 to-transparent" />
-                  {/* Category badge */}
-                  {k.category && (
-                    <span className="absolute top-3 left-3 text-[9px] font-extrabold uppercase tracking-wide text-white rounded-full px-2.5 py-1 backdrop-blur-md"
-                      style={{ boxShadow: "0 3px 10px rgba(15,23,42,0.18)", background: ({
-                        "Makanan Berat": "#f97316",
-                        "Makanan Ringan": "#16a34a",
-                        "Minuman": "#0194f3",
-                        "Cafe": "#7c3aed",
-                        "Oleh-oleh": "#0172B1",
-                        "Dessert": "#ec4899",
-                        "Street Food": "#ea580c",
-                        "Snack": "#64748b",
-                      }[k.category as string] ?? "#475569") }}>
-                       {k.category === "Makanan Berat" ? "Makanan" : k.category}
-                    </span>
-                  )}
-                  <span className="absolute bottom-3 left-3 flex items-center gap-1 text-[9px] font-semibold text-white/90">
-                    <MapPin className="h-3 w-3" strokeWidth={2.5} />
-                    {selectedCity === ALL_CITIES ? "Jawa Barat" : selectedCity}
-                  </span>
-                  {getGoogleRating(k) != null ? (
-                    <div className="absolute top-3 right-3 flex items-center gap-1 rounded-full bg-white/95 backdrop-blur-sm text-amber-700 text-[10px] md:text-xs font-extrabold px-2.5 py-1 shadow-md" title="Rating Google Maps">
-                      <Star className="h-3 w-3 fill-amber-400 text-amber-500" strokeWidth={1.5} />
-                      {getGoogleRating(k)!.toLocaleString("id-ID", { minimumFractionDigits: 1, maximumFractionDigits: 1 })}
-                    </div>
-                  ) : k.computed_rating != null && (
-                    <div className="absolute top-3 right-3 flex items-center gap-1 rounded-full bg-slate-950/65 backdrop-blur-md text-white text-[10px] md:text-xs font-bold px-2.5 py-1 shadow-md" title="Rating Nempo">
-                      <Star className="h-3 w-3 fill-amber-300 text-amber-300" strokeWidth={1.5} />
-                      Nempo {k.computed_rating}
-                    </div>
-                  )}
-                </div>
-                <div className="p-3.5 md:p-4 flex flex-col flex-1">
-                  <h3 className="font-extrabold text-slate-900 text-sm md:text-[15px] leading-snug line-clamp-2 min-h-[2.5em]">{k.name}</h3>
-                  <div className="flex items-center gap-1.5 text-slate-500 text-[10px] md:text-[11px] mt-2 min-w-0">
-                    <MapPin className="h-3 w-3 shrink-0 text-orange-500" strokeWidth={2.5} />
-                    <span className="truncate">{k.location}</span>
-                  </div>
-                  {k.instagram && (
-                    <span role="link" tabIndex={0}
-                       onClick={e => { e.preventDefault(); e.stopPropagation(); window.open(`https://instagram.com/${(k.instagram as string).replace(/^@/, "")}`, "_blank", "noopener,noreferrer"); }}
-                       onKeyDown={e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); e.stopPropagation(); window.open(`https://instagram.com/${(k.instagram as string).replace(/^@/, "")}`, "_blank", "noopener,noreferrer"); } }}
-                       className="flex items-center gap-1 text-pink-500 text-[10px] font-semibold mt-2 min-w-0 overflow-hidden cursor-pointer">
-                      <svg viewBox="0 0 24 24" className="h-3 w-3 fill-current shrink-0"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-                      <span className="truncate">{(k.instagram as string).startsWith("@") ? k.instagram : `@${k.instagram}`}</span>
-                    </span>
-                  )}
-                  {k.review_count > 0 && (
-                    <div className="flex items-center gap-1 text-slate-400 text-[10px] md:text-[11px] mt-2">
-                      <ThumbsUp className="h-3 w-3" />
-                      <span>{k.review_count} ulasan</span>
-                    </div>
-                  )}
-                  <span className="flex items-center justify-between gap-2 mt-3 pt-3 border-t border-slate-100 text-[10px] md:text-[11px] font-extrabold text-orange-600">
-                    Temukan rasanya <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
-                  </span>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </section>
-        )}
+        {/* ── Kuliner Paling Populer — dihapus ── */}
+
 
         {/* ── Donasi Bibit Jawa Barat Hijau — hidden ── */}
         {/* <section className="relative overflow-hidden rounded-2xl">
