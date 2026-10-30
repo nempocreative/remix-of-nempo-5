@@ -802,10 +802,11 @@ const INFO_BANNERS = [
     id: "wisata",
     image: digitalGrowthBannerImage,
     alt: "Pemandangan pegunungan Jawa Barat untuk kolaborasi digital",
-    title: "Tumbuh bersama di era digital.",
-    description: "Perkuat usaha dan destinasi lokal lewat kolaborasi bersama Nempo.",
-    cta: "Mulai berkolaborasi",
+    title: "Tumbuh bersama NEMPO Organizer.",
+    description: "Event & wedding organizer, sosmed management, desain kreatif, web development, sampai talent management — semua ada di satu tim.",
+    cta: "Lihat layanan & harga",
   },
+
 ] as const;
 
 const HOME_FOLKLORE_STORIES = [
