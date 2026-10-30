@@ -1,0 +1,11 @@
+[
+ {"capability":"frontend code","source":"artifacts/nempo-garut-web","outcome":"migrate","status":"done","next_action":"none"},
+ {"capability":"schema + api","source":"artifacts/api-server","outcome":"migrate","status":"pending","next_action":"recreate on Lovable Cloud"},
+ {"capability":"records","source":"Replit PostgreSQL","outcome":"migrate","status":"pending","next_action":"user exports CSV per table"},
+ {"capability":"auth (users + admin JWT, Google)","source":"api-server","outcome":"migrate","status":"pending","next_action":"replace with Lovable auth"},
+ {"capability":"admin panel","source":"artifacts/admin-panel","outcome":"migrate","status":"pending","next_action":"port"},
+ {"capability":"Midtrans payments","source":"api-server","outcome":"preserve","status":"pending","next_action":"port + request keys"},
+ {"capability":"SMTP email","source":"api-server","outcome":"preserve","status":"pending","next_action":"port + request password"},
+ {"capability":"uploaded files","source":"api-server/public/uploads","outcome":"migrate","status":"pending","next_action":"move to storage"},
+ {"capability":"other artifacts","source":"nempo-feed-45, nempo-mou, tion-feed, nempo-garut","outcome":"migrate","status":"pending","next_action":"port"}
+]
