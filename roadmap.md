@@ -1,4 +1,5 @@
 # Roadmap — NEMPO Garut migration
+- [x] Hapus Berita dari website (ticker beranda, halaman /berita, kartu kategori, hasil cari)
 - [x] Website utama (nempo-garut-web): semua halaman, gambar, tampilan
 - [ ] Database & API (api-server, 20+ tabel) ke Lovable Cloud — butuh persetujuan pindah tahap
 - [ ] Data lama (CSV dari database Replit) — menunggu file dari user
