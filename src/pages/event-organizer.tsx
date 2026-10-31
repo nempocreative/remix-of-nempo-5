@@ -1,3 +1,4 @@
+import type React from "react";
 import { useState } from "react";
 import { Layout } from "@/components/layout";
 import { Link } from "@/lib/wouter";
@@ -8,20 +9,20 @@ import {
 } from "lucide-react";
 
 const services = [
-  { icon: MapPin, title: "Outing & Tour", desc: "Perjalanan wisata rombongan, outing kantor, dan tur komunitas dengan transportasi lengkap." },
-  { icon: Building2, title: "Corporate Event", desc: "Gathering, launching produk, seminar, rapat kerja, dan family day perusahaan." },
-  { icon: Music, title: "Konser & Festival", desc: "Produksi panggung, sound, lighting, tiketing digital, dan manajemen talent." },
-  { icon: GraduationCap, title: "Event Sekolah & Kampus", desc: "Pensi, wisuda, perpisahan, seminar, dan buku tahunan digital." },
-  { icon: Trophy, title: "Lomba & Turnamen", desc: "Registrasi online, penjurian, bracket, hingga penyerahan hadiah." },
-  { icon: PartyPopper, title: "Ulang Tahun & Private Party", desc: "Pesta keluarga, sweet seventeen, dan acara komunitas yang berkesan." },
+  { icon: MapPin, title: "Outing & Tour", color: "#6366F1", desc: "Perjalanan wisata rombongan, outing kantor, dan tur komunitas dengan transportasi lengkap." },
+  { icon: Building2, title: "Corporate Event", color: "#0EA5E9", desc: "Gathering, launching produk, seminar, rapat kerja, dan family day perusahaan." },
+  { icon: Music, title: "Konser & Festival", color: "#DB2777", desc: "Produksi panggung, sound, lighting, tiketing digital, dan manajemen talent." },
+  { icon: GraduationCap, title: "Event Sekolah & Kampus", color: "#D97706", desc: "Pensi, wisuda, perpisahan, seminar, dan buku tahunan digital." },
+  { icon: Trophy, title: "Lomba & Turnamen", color: "#0F766E", desc: "Registrasi online, penjurian, bracket, hingga penyerahan hadiah." },
+  { icon: PartyPopper, title: "Ulang Tahun & Private Party", color: "#8B5CF6", desc: "Pesta keluarga, sweet seventeen, dan acara komunitas yang berkesan." },
 ];
 
 const steps = [
-  { icon: MessageCircle, title: "Konsultasi Gratis", desc: "Ceritakan kebutuhan, tanggal, jumlah tamu, dan budget kamu." },
-  { icon: ClipboardList, title: "Konsep & Penawaran", desc: "Kami susun konsep, rundown awal, dan rincian biaya transparan." },
-  { icon: Palette, title: "Persiapan & Desain", desc: "Desain visual, vendor, venue, talent, dan technical meeting." },
-  { icon: Wrench, title: "Eksekusi Hari H", desc: "Tim lapangan mengatur semua agar acara berjalan sesuai rundown." },
-  { icon: FileCheck, title: "Laporan & Dokumentasi", desc: "Foto, video highlight, dan evaluasi acara diserahkan ke kamu." },
+  { icon: MessageCircle, title: "Konsultasi Gratis", color: "#6366F1", desc: "Ceritakan kebutuhan, tanggal, jumlah tamu, dan budget kamu." },
+  { icon: ClipboardList, title: "Konsep & Penawaran", color: "#0EA5E9", desc: "Kami susun konsep, rundown awal, dan rincian biaya transparan." },
+  { icon: Palette, title: "Persiapan & Desain", color: "#DB2777", desc: "Desain visual, vendor, venue, talent, dan technical meeting." },
+  { icon: Wrench, title: "Eksekusi Hari H", color: "#D97706", desc: "Tim lapangan mengatur semua agar acara berjalan sesuai rundown." },
+  { icon: FileCheck, title: "Laporan & Dokumentasi", color: "#0F766E", desc: "Foto, video highlight, dan evaluasi acara diserahkan ke kamu." },
 ];
 
 const packages = [
@@ -49,6 +50,23 @@ const faqs = [
   { q: "Apakah melayani di luar Garut?", a: "Ya, kami melayani seluruh Jawa Barat. Biaya transport tim menyesuaikan lokasi." },
   { q: "Bagaimana sistem pembayarannya?", a: "DP 30% untuk mengunci tanggal, 50% saat persiapan, dan pelunasan H-3 acara." },
 ];
+
+function LuxIcon({ icon: Icon, color, size = "md", className = "" }: { icon: React.ElementType; color: string; size?: "sm" | "md"; className?: string }) {
+  const box = size === "sm" ? "h-11 w-11 rounded-[14px]" : "h-[52px] w-[52px] rounded-[16px]";
+  return (
+    <span
+      className={`relative flex shrink-0 items-center justify-center overflow-hidden ${box} ${className}`}
+      style={{
+        background: `linear-gradient(148deg, color-mix(in srgb, ${color} 55%, white) 0%, ${color} 58%, color-mix(in srgb, ${color} 72%, black) 100%)`,
+        boxShadow: `0 4px 0 color-mix(in srgb, ${color} 82%, black), 0 8px 13px -9px ${color}88, inset 0 1px 0 rgba(255,255,255,.54)`,
+      }}
+    >
+      <span aria-hidden="true" className="pointer-events-none absolute inset-0 rounded-[inherit] bg-[radial-gradient(ellipse_at_27%_17%,rgba(255,255,255,.42),transparent_56%)]" />
+      <span aria-hidden="true" className="pointer-events-none absolute inset-[1px] rounded-[inherit] border border-white/20" />
+      <Icon className={`relative z-10 text-white drop-shadow-[0_2px_2px_rgba(0,0,0,.25)] ${size === "sm" ? "h-5 w-5" : "h-6 w-6"}`} strokeWidth={2.2} />
+    </span>
+  );
+}
 
 export default function EventOrganizerPage() {
   const [open, setOpen] = useState<number | null>(0);
@@ -98,9 +116,7 @@ export default function EventOrganizerPage() {
           <div className="grid grid-cols-2 gap-3">
             {services.map((s) => (
               <div key={s.title} className="rounded-2xl border border-border bg-card p-4 transition-colors hover:border-brand/40">
-                <div className="mb-3 flex h-11 w-11 items-center justify-center rounded-xl bg-brand-sky">
-                  <s.icon className="h-5 w-5 text-brand" />
-                </div>
+                <LuxIcon icon={s.icon} color={s.color} className="mb-3.5" />
                 <h3 className="text-[13px] font-bold leading-snug text-foreground">{s.title}</h3>
                 <p className="mt-1.5 text-[11px] leading-relaxed text-muted-foreground">{s.desc}</p>
               </div>
@@ -114,12 +130,10 @@ export default function EventOrganizerPage() {
           <ol className="space-y-3">
             {steps.map((s, i) => (
               <li key={s.title} className="flex gap-4 rounded-2xl bg-card p-4 shadow-sm">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand text-sm font-extrabold text-primary-foreground">
-                  {String(i + 1).padStart(2, "0")}
-                </div>
+                <LuxIcon icon={s.icon} color={s.color} size="sm" />
                 <div>
                   <h3 className="flex items-center gap-1.5 text-sm font-bold text-brand-navy">
-                    <s.icon className="h-4 w-4 text-brand" /> {s.title}
+                    <span className="text-[11px] font-extrabold text-brand">{String(i + 1).padStart(2, "0")}</span> {s.title}
                   </h3>
                   <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{s.desc}</p>
                 </div>
