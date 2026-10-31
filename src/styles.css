@@ -31,6 +31,11 @@ body,
   --color-brand-navy: #17314a;
   --color-brand-sky: #e8f5ff;
   --color-brand-orange: #f97316;
+  --color-wed-rose: #b4466a;
+  --color-wed-blush: #fbeef1;
+  --color-wed-gold: #c79a4a;
+  --color-wed-ink: #3a1f2b;
+  --font-wed-serif: "Playfair Display", Georgia, serif;
   --color-blue-50:  hsl(39 45% 96%);
   --color-blue-100: hsl(38 42% 91%);
   --color-blue-200: hsl(37 38% 83%);
