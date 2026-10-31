@@ -3,8 +3,8 @@ import { Layout } from "@/components/layout";
 import { Link } from "@/lib/wouter";
 import {
   PartyPopper, Building2, Music, GraduationCap, Trophy,
-  MessageCircle, ClipboardList, Palette, Wrench, Sparkles, FileCheck,
-  Check, ChevronDown, Star, Users, CalendarCheck, MapPin, ArrowRight,
+  MessageCircle, ClipboardList, Palette, Wrench, FileCheck,
+  Check, ChevronDown, Award, Users, CalendarCheck, MapPin, ArrowRight,
 } from "lucide-react";
 
 const services = [
@@ -33,7 +33,7 @@ const packages = [
 const stats = [
   { icon: CalendarCheck, value: "150+", label: "Event terlaksana" },
   { icon: Users, value: "50rb+", label: "Peserta dilayani" },
-  { icon: Star, value: "4.9", label: "Rating klien" },
+  { icon: Award, value: "4.9", label: "Rating klien" },
   { icon: MapPin, value: "Jabar", label: "Area layanan" },
 ];
 
@@ -61,7 +61,7 @@ export default function EventOrganizerPage() {
           <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-brand/40 blur-3xl" />
           <div className="pointer-events-none absolute -bottom-20 -left-10 h-48 w-48 rounded-full bg-brand-orange/25 blur-3xl" />
           <span className="relative inline-flex items-center gap-1.5 rounded-full border border-primary-foreground/20 bg-primary-foreground/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider backdrop-blur">
-            <Sparkles className="h-3.5 w-3.5 text-brand-orange" /> NEMPO Event Organizer
+            NEMPO Event Organizer
           </span>
           <h1 className="relative mt-5 text-[28px] font-extrabold leading-[1.15] tracking-tight">
             Acara impianmu,<br />
@@ -179,9 +179,6 @@ export default function EventOrganizerPage() {
           <div className="flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-2 [scrollbar-width:none]">
             {testimonials.map((t) => (
               <div key={t.name} className="flex w-[78%] shrink-0 snap-start flex-col rounded-2xl border border-border bg-card p-5">
-                <div className="mb-3 flex gap-0.5">
-                  {Array.from({ length: 5 }).map((_, i) => <Star key={i} className="h-4 w-4 fill-brand-orange text-brand-orange" />)}
-                </div>
                 <p className="flex-1 text-[13px] leading-relaxed text-foreground">“{t.text}”</p>
                 <div className="mt-4 flex items-center gap-3 border-t border-border pt-4">
                   <div className="flex h-9 w-9 items-center justify-center rounded-full bg-brand-sky text-sm font-bold text-brand">
